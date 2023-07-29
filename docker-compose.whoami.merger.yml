@@ -1,0 +1,9 @@
+services:
+   
+  whoami:
+
+    networks:
+      - traefik
+
+    depends_on:
+      - traefik

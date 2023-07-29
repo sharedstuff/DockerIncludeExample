@@ -1,0 +1,8 @@
+include:
+
+   - path:
+      - ./traefik/docker-compose.yml
+      
+   - path:
+      - ./whoami/docker-compose.yml
+      - ./docker-compose.whoami.merger.yml

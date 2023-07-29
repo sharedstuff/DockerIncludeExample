@@ -1,0 +1,24 @@
+networks:
+
+  traefik:
+
+
+services:
+
+  traefik:
+
+    image: traefik
+
+    networks:
+      - traefik
+    
+    ports:
+      - 80:80
+      - 8080:8080
+    
+    command: 
+      - --api.insecure=true 
+      - --providers.docker
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
