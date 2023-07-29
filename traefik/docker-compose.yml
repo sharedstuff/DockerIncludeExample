@@ -3,14 +3,29 @@ services:
   traefik:
 
     image: traefik
-    
+   
     ports:
       - 80:80
       - 8080:8080
-    
-    command: 
-      - --api.insecure=true 
-      - --providers.docker
+
+    labels:
+
+      - traefik.enable=true
+
+      - traefik.http.routers.traefik.rule=( Host(`traefik.localhost`) || Host(`traefik.home.arpa`) )
+      - traefik.http.services.traefik.loadbalancer.server.port=8080
 
     volumes:
+      - ./config/traefik.yml:/etc/traefik/traefik.yml:ro
       - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+
+    healthcheck:
+    # Run traefik healthcheck command
+    # https://doc.traefik.io/traefik/operations/cli/#healthcheck
+    # ! depends on: ping=true
+      test: traefik healthcheck --ping
+      timeout: 5s
+      interval: 15s
+      start_period: 10s
+      retries: 3            

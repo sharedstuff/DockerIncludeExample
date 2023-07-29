@@ -1,0 +1,15 @@
+api:
+  insecure: true
+
+providers:
+  
+  docker: 
+    exposedbydefault: false
+    network: traefik
+
+entryPoints:
+  
+  web:
+    address: :80
+
+ping: true

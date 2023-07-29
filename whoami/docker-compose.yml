@@ -2,7 +2,14 @@ services:
 
   whoami:
 
-    image: traefik/whoami
+    #image: traefik/whoami
+
+    build: 
+      context: build
 
     labels:
-      - traefik.http.routers.whoami.rule=Host(`whoami.docker.localhost`)
+    
+      - traefik.enable=true
+
+      - traefik.http.routers.whoami.rule=( Host(`whoami.localhost`) || Host(`whoami.home.arpa`) )
+      - traefik.http.services.whoami.loadbalancer.server.port=80
