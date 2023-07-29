@@ -1,0 +1,13 @@
+services:
+   
+  traefik:
+
+    networks:
+      - traefik
+
+    labels:
+
+      - traefik.enable=true
+
+      - traefik.http.routers.traefik.rule=( Host(`traefik.localhost`) || Host(`traefik.home.arpa`) )
+      - traefik.http.services.traefik.loadbalancer.server.port=8080

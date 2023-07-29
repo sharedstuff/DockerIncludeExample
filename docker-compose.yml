@@ -1,14 +1,15 @@
-networks:
-
-   traefik:
-
-
 include:
 
+   # base include - e.g.: network config
+   - path:
+      - ./docker-compose.include.#.yml
+
+   # service + specific include
    - path:
       - ./traefik/docker-compose.yml
-      - ./docker-compose.traefik.merger.yml
+      - ./docker-compose.include.traefik.yml
 
+   # service + specific include
    - path:
       - ./whoami/docker-compose.yml
-      - ./docker-compose.whoami.merger.yml
+      - ./docker-compose.include.whoami.yml

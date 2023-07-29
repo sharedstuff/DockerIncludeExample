@@ -1,0 +1,16 @@
+services:
+   
+  whoami:
+
+    networks:
+      - traefik
+
+    depends_on:
+      - traefik
+
+    labels:
+    
+      - traefik.enable=true
+
+      - traefik.http.routers.whoami.rule=( Host(`whoami.localhost`) || Host(`whoami.home.arpa`) )
+      - traefik.http.services.whoami.loadbalancer.server.port=80      
