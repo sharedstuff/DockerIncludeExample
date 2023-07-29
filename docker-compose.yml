@@ -1,8 +1,14 @@
+networks:
+
+   traefik:
+
+
 include:
 
    - path:
       - ./traefik/docker-compose.yml
-      
+      - ./docker-compose.traefik.merger.yml
+
    - path:
       - ./whoami/docker-compose.yml
       - ./docker-compose.whoami.merger.yml

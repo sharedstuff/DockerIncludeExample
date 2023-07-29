@@ -1,16 +1,8 @@
-networks:
-
-  traefik:
-
-
 services:
 
   traefik:
 
     image: traefik
-
-    networks:
-      - traefik
     
     ports:
       - 80:80
