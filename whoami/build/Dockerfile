@@ -1,6 +1,6 @@
-FROM traefik/whoami AS base
+FROM registry.localhost/traefik/whoami AS base
 
-FROM alpine
+FROM registry.localhost/alpine
 COPY --from=base /whoami /
 
 ENTRYPOINT [ "/whoami" ]

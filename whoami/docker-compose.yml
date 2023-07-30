@@ -2,7 +2,10 @@ services:
 
   whoami:
 
-    #image: traefik/whoami
-
     build: 
       context: build
+      tags:
+        - registry.localhost/traefik/whoami-alpine
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro

@@ -2,16 +2,16 @@ services:
 
   traefik:
 
-    image: traefik
+    image: registry.localhost/traefik
    
     ports:
       - 80:80
       - 8080:8080
 
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./config/traefik.yml:/etc/traefik/traefik.yml:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/localtime:/etc/localtime:ro
 
     healthcheck:
     # Run traefik healthcheck command

@@ -1,0 +1,19 @@
+services:
+
+  registry:
+
+    image: registry.localhost/registry
+
+    env_file:
+      - ./env/.env
+
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./volumes/data:/var/lib/registry:cached
+
+    healthcheck:
+      test: wget -q --spider http://127.0.0.1:5000
+      timeout: 5s
+      interval: 15s
+      start_period: 10s
+      retries: 3

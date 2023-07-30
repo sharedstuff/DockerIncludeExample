@@ -1,0 +1,16 @@
+services:
+   
+  registry:
+
+    networks:
+      - traefik
+
+    depends_on:
+      - traefik
+
+    labels:
+    
+      - traefik.enable=true
+
+      - traefik.http.routers.registry.rule=( Host(`registry.localhost`) || Host(`registry.home.arpa`) )
+      - traefik.http.services.registry.loadbalancer.server.port=5000

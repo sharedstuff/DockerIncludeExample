@@ -6,10 +6,13 @@ include:
 
    # service + specific include
    - path:
+      - ./registry/docker-compose.yml
+      - ./docker-compose.include.registry.yml
+
+   - path:
       - ./traefik/docker-compose.yml
       - ./docker-compose.include.traefik.yml
 
-   # service + specific include
    - path:
       - ./whoami/docker-compose.yml
       - ./docker-compose.include.whoami.yml
